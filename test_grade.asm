@@ -4,7 +4,7 @@ pass1_len equ $ - pass1_msg
 fail1_msg db "FAIL: average wrong", 10
 fail1_len equ $ - fail1_msg
 
-pass2_msg db "PASS: grade = B", 10
+pass2_msg db "PASS: grade = A", 10
 pass2_len equ $ - pass2_msg
 fail2_msg db "FAIL: grade wrong", 10
 fail2_len equ $ - fail2_msg
@@ -38,7 +38,7 @@ _start:
 .test_grade:
     mov rax, r12
     call get_letter_grade
-    cmp al, 'B'
+    cmp al, 'A'
     je .grade_pass
 
 .grade_fail:

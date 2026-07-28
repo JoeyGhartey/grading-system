@@ -14,13 +14,13 @@ calculate_average:
 ; expects: rax = average
 ; returns: al = ASCII letter ('A','B','C','D','F')
 get_letter_grade:
-    cmp rax, 90
-    jge .grade_a
-    cmp rax, 80
-    jge .grade_b
     cmp rax, 70
-    jge .grade_c
+    jge .grade_a
     cmp rax, 60
+    jge .grade_b
+    cmp rax, 50
+    jge .grade_c
+    cmp rax, 40
     jge .grade_d
     mov al, 'F'
     ret
