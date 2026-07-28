@@ -1,3 +1,5 @@
-NAME_LEN     equ 20      ; max characters for a student name
-RECORD_SIZE  equ 28      ; name(20) + total_score(4) + num_scores(4)
+NAME_LEN     equ 20
+RECORD_SIZE  equ 28
 MAX_STUDENTS equ 500
+TOTAL_OFFSET equ NAME_LEN
+COUNT_OFFSET equ NAME_LEN + 4
