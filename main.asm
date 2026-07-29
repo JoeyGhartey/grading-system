@@ -2,12 +2,14 @@
 DEFAULT ABS
 
 section .bss
+global student_records
+global student_count
 student_records resb RECORD_SIZE * MAX_STUDENTS
 student_count resd 1
 choice_buf resb 10
 
 section .data
-menu_msg db 10, "1. Add student", 10, "2. View report", 10, "3. Exit", 10, "Choice: ", 0
+menu_msg db 10, "1. Add student", 10, "2. View report", 10, "3. Search student", 10, "4. Exit", 10, "Choice: ", 0
 menu_msg_len equ $ - menu_msg - 1
 full_msg db "Class is full.", 10, 0
 full_msg_len equ $ - full_msg - 1
@@ -22,6 +24,7 @@ extern str_to_int
 extern add_student_name
 extern add_student_scores
 extern display_student
+extern search_student
 
 _start:
     mov dword [student_count], 0
@@ -43,6 +46,8 @@ _start:
     cmp rax, 2
     je .view_report
     cmp rax, 3
+    je .do_search
+    cmp rax, 4
     je .exit_program
     jmp .menu_loop
 
@@ -91,6 +96,10 @@ _start:
     jmp .report_loop
 
 .report_done:
+    jmp .menu_loop
+
+.do_search:
+    call search_student
     jmp .menu_loop
 
 .exit_program:
