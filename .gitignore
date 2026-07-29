@@ -1,2 +1,15 @@
+# Build Binaries & Object Files
+*.exe
 *.o
-hello
+*.obj
+
+# Data & Database Persistence Files
+students.dat
+students.csv
+
+# Temporary Build Files
+*.tmp
+*.log
+guide.html
+convert_to_pdf.py
+test_*.txt
