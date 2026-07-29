@@ -62,6 +62,12 @@ add_student_scores:
     call str_to_int
     mov r15, rax            ; r15 = how many scores to read (original count, kept for storage)
     mov r14, rax             ; r14 = loop counter (counts down to 0)
+    
+    cmp r15, 20
+    jle .count_ok
+    mov r15, 20
+    mov r14, 20
+.count_ok:
 
     xor r13, r13              ; r13 = running total, starts at 0
 
