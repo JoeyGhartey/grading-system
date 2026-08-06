@@ -23,18 +23,7 @@ add_student_name:
     mov rsi, rdi            ; store name directly at start of record (offset 0)
     mov rdx, NAME_LEN
     call read_input
-    ; replace newline with null terminator to prevent buffer overflow issues
-    cmp rax, 0
-    jle .skip_null
-    cmp byte [rdi + rax - 1], 10
-    jne .no_nl
-    mov byte [rdi + rax - 1], 0
-    jmp .skip_null
-.no_nl:
-    cmp rax, NAME_LEN
-    jl .skip_null
-    mov byte [rdi + rax - 1], 0
-.skip_null:
+    ; rax = number of bytes actually typed, currently unused here but available
 
     pop rdi
     ret
